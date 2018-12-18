@@ -1,18 +1,19 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+using Microsoft.EntityFrameworkCore;
+using Arqsi_1160752_1161361_3DF.Data;
+using Arqsi_1160752_1161361_3DF.Data.Repositories;
 
-namespace SiC_GC
+namespace Arqsi_1160752_1161361_3DF
 {
     public class Startup
     {
@@ -24,18 +25,40 @@ namespace SiC_GC
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
+            
+    
+             services.AddCors(options =>
+                {
+                    options.AddPolicy("AllowAll",
+                        builder =>
+                        {
+                            builder
+                            .AllowAnyOrigin() 
+                            .AllowAnyMethod()
+                            .AllowAnyHeader()
+                            .AllowCredentials();
+                        });
+                });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.AddDbContext<Models.SiCContext>
-                (options => options.UseSqlServer(Configuration.GetConnectionString("SiCContext")));
 
-            services.AddCors();
-            //Ativar isto para DB local, não consegui usar SQL Server na minha máquina
-            /*services.AddDbContext<Models.SiCContext>
-                (options => options.UseInMemoryDatabase("SiCContext"));*/
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IMaterialRepository, MaterialRepository>();
+            services.AddScoped<IFinishRepository, FinishRepository>();
+            services.AddScoped<IRestrictionRepository, RestrictionRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IProductAndMaterialRepository, ProductAndMaterialRepository>();
+            services.AddScoped<IProductRelationshipRepository, ProductRelationshipRepository>();
+
+            services.AddDbContext<ClosetContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ClosetContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,16 +70,15 @@ namespace SiC_GC
             }
             else
             {
-                app.UseHsts();
+                app.UseExceptionHandler("/Error");
+                app.UseHsts();  
             }
 
-            app.UseHttpsRedirection();
-            app.UseCors(builder => builder
-    .AllowAnyOrigin()
-    .AllowAnyMethod()
-    .AllowAnyHeader()
-    .AllowCredentials());
-            app.UseMvc();
+            //app.UseHttpsRedirection();
+            app.UseCookiePolicy();
+
+            app.UseCors("AllowAll");
+            app.UseStaticFiles();
             app.UseMvc();
         }
     }
