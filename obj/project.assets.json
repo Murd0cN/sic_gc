@@ -12225,11 +12225,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\Pedro Tedim\\Desktop\\PROJETOBASE\\Projeto\\Arqsi_1160752_1161361_3DF\\Arqsi_1160752_1161361_3DF.csproj",
+      "projectUniqueName": "C:\\Users\\Pedro Tedim\\Documents\\GITHUB\\sic_gc\\Arqsi_1160752_1161361_3DF.csproj",
       "projectName": "Arqsi_1160752_1161361_3DF",
-      "projectPath": "c:\\Users\\Pedro Tedim\\Desktop\\PROJETOBASE\\Projeto\\Arqsi_1160752_1161361_3DF\\Arqsi_1160752_1161361_3DF.csproj",
+      "projectPath": "C:\\Users\\Pedro Tedim\\Documents\\GITHUB\\sic_gc\\Arqsi_1160752_1161361_3DF.csproj",
       "packagesPath": "C:\\Users\\Pedro Tedim\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\Pedro Tedim\\Desktop\\PROJETOBASE\\Projeto\\Arqsi_1160752_1161361_3DF\\obj\\",
+      "outputPath": "C:\\Users\\Pedro Tedim\\Documents\\GITHUB\\sic_gc\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
