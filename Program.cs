@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace Arqsi_1160752_1161361_3DF
+namespace SiC_GC
 {
     public class Program
     {

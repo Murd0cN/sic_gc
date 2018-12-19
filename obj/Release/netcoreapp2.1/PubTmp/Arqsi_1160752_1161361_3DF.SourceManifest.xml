@@ -1,5 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<sitemanifest>
-  <IisApp path="D:\Faculdade\Arqsi\Projeto\Arqsi_1160752_1161361_3DF\obj\Release\netcoreapp2.1\PubTmp\Out\" />
-  <dbfullsql path="D:\Faculdade\Arqsi\Projeto\Arqsi_1160752_1161361_3DF\obj\Release\netcoreapp2.1\PubTmp\EFSQLScripts\Arqsi_1160752_1161361_3DF.Data.ClosetContext.sql" />
-</sitemanifest>

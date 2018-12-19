@@ -1,4 +1,0 @@
-{
-    "appService.defaultWebAppToDeploy": "/subscriptions/e99c74d1-dac7-466d-a6e0-5c64b3fe2c6f/resourceGroups/appsvc_rg_windows_centralus/providers/Microsoft.Web/sites/sic-cm",
-    "appService.deploySubpath": ""
-}

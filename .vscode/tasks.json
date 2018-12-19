@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Arqsi_1160752_1161361_3DF.csproj"
+                "${workspaceFolder}/SiC_GC.csproj"
             ],
             "problemMatcher": "$msCompile"
         }
